@@ -1,8 +1,12 @@
 class Usuario:
-    def __init__(self, nombre, contrasena, numero_id):
+    def __init__(self, nombre, contrasena, numero_id, cargo):
         self.nombre = nombre
         self.contrasena = contrasena
         self.numero_id = numero_id
+        self.cargo = cargo
+
+    def tipo_de_usuario(self):
+        return self.cargo
 
 
 class AdministradorUsuarios:
@@ -13,9 +17,10 @@ class AdministradorUsuarios:
         nombre = input("Ingrese su nombre: ")
         contrasena = input("Ingrese su contraseña: ")
         numero_id = input("Ingrese su número de identificación: ")
+        cargo = input("Ingrese tipo de usuario (1: Administrador, 2: Vendedor, 3: Encargado de inventario)")
 
-        user = Usuario(nombre, contrasena, numero_id)
-        self.usuarios.append(user)
+        usuario = Usuario(nombre, contrasena, numero_id, cargo)
+        self.usuarios.append(usuario)
         print("Usuario registrado con éxito")
 
     def iniciar_sesion(self):
