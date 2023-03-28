@@ -12,11 +12,18 @@ class Usuario:
 class AdministradorUsuarios:
     def __init__(self):
         self.usuarios = []
+        self.id_ingresados = []
 
     def registro(self):
         nombre = input("Ingrese su nombre: ")
         contrasena = input("Ingrese su contraseña: ")
         numero_id = input("Ingrese su número de identificación: ")
+
+        for usuario in self.usuarios:
+            if usuario.numero_id == numero_id:
+                print("El número de identificación ya existe, Intente de nuevo")
+                return
+
         cargo = input("Ingrese tipo de usuario (1: Administrador, 2: Vendedor, 3: Encargado de inventario): ")
 
         usuario = Usuario(nombre, contrasena, numero_id, cargo)
@@ -51,13 +58,17 @@ class Categoria:
     def __init__(self,):
         self.nombre_categoria = str
         self.precio_categoria = float
+        self.lista_categorias = []
 
     def crear_categoria(self):
         self.nombre_categoria = input("Ingrese el nombre de la categoria a crear: ")
         self.precio_categoria = input("Ingrese el precio de la categoria a crear: ")
 
+        diccionario_categoria = {}
+        diccionario_categoria[self.nombre_categoria] = self.precio_categoria
+        self.lista_categorias.append(diccionario_categoria)
         print("La categoria ha sido creada correctamente")
-
+        print(self.lista_categorias)
 
 administrador_usuarios = AdministradorUsuarios()
 categoria = Categoria()
