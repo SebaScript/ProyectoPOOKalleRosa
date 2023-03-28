@@ -17,7 +17,7 @@ class AdministradorUsuarios:
         nombre = input("Ingrese su nombre: ")
         contrasena = input("Ingrese su contraseña: ")
         numero_id = input("Ingrese su número de identificación: ")
-        cargo = input("Ingrese tipo de usuario (1: Administrador, 2: Vendedor, 3: Encargado de inventario)")
+        cargo = input("Ingrese tipo de usuario (1: Administrador, 2: Vendedor, 3: Encargado de inventario): ")
 
         usuario = Usuario(nombre, contrasena, numero_id, cargo)
         self.usuarios.append(usuario)
@@ -30,11 +30,37 @@ class AdministradorUsuarios:
         for usuario in self.usuarios:
             if usuario.numero_id == numero_id and usuario.contrasena == contrasena:
                 print("Inicio de sesión exitoso")
+
+                while True:
+                    print("1. Crear categoria")
+                    print("2. Salir")
+
+                    seleccion = input("Ingrese su opción: ")
+
+                    if seleccion == "1":
+                        categoria.crear_categoria()
+                    elif seleccion == "2":
+                        break
+                    else:
+                        print("Opción inválida")
                 return
         print("Número de identificación o contraseña incorrectos")
 
 
+class Categoria:
+    def __init__(self,):
+        self.nombre_categoria = str
+        self.precio_categoria = float
+
+    def crear_categoria(self):
+        self.nombre_categoria = input("Ingrese el nombre de la categoria a crear: ")
+        self.precio_categoria = input("Ingrese el precio de la categoria a crear: ")
+
+        print("La categoria ha sido creada correctamente")
+
+
 administrador_usuarios = AdministradorUsuarios()
+categoria = Categoria()
 print("¡Bienvenido al sistema!")
 
 while True:
