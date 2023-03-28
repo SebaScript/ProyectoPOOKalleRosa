@@ -68,7 +68,6 @@ class Categoria:
         diccionario_categoria[self.nombre_categoria] = self.precio_categoria
         self.lista_categorias.append(diccionario_categoria)
         print("La categoria ha sido creada correctamente")
-        print(self.lista_categorias)
 
 administrador_usuarios = AdministradorUsuarios()
 categoria = Categoria()
