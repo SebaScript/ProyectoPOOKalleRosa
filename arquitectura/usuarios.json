@@ -1,0 +1,38 @@
+[
+ {
+  "nombre": "a",
+  "numero_id": "a",
+  "contrasena": "a",
+  "cargo": "a"
+ },
+ {
+  "nombre": "b",
+  "numero_id": "b",
+  "contrasena": "b",
+  "cargo": "b"
+ },
+ {
+  "nombre": "sizas",
+  "numero_id": "23",
+  "contrasena": "87",
+  "cargo": "5"
+ },
+ {
+  "nombre": "sebas",
+  "numero_id": "987",
+  "contrasena": "23",
+  "cargo": "admin"
+ },
+ {
+  "nombre": "bas",
+  "numero_id": "567",
+  "contrasena": "bas123",
+  "cargo": "admin"
+ },
+ {
+  "nombre": "as",
+  "numero_id": "fgd",
+  "contrasena": "asf",
+  "cargo": "gg"
+ }
+]

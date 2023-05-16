@@ -51,7 +51,7 @@ class Administrador(Usuario):
             datos.append(nuevo_usuario)
 
         with open("usuarios.json", "w", encoding="utf-8") as archivo:
-            json.dump(datos, archivo)
+            json.dump(datos, archivo, indent=1)
 
     def iniciar_sesion(self, numero_id, contrasena):
         super().iniciar_sesion(numero_id, contrasena)
@@ -93,7 +93,22 @@ class EncargadoBodega(Usuario):
         super().iniciar_sesion(numero_id, contrasena)
 
     def crear_categoria(self, nombre_categoria, precio):
-        pass
+        nueva_categoria = {"nombre categoria": nombre_categoria, "precio": precio, "productos": []}
+
+        with open("inventario.json", "r", encoding="utf-8") as archivo:
+            datos = json.load(archivo)
+
+            # Excepción
+            for categoria in datos:
+                if categoria["nombre categoria"] == nombre_categoria:
+                    raise Exception
+
+            nueva_categoria["nombre_categoria"] = nombre_categoria
+            nueva_categoria["precio"] = precio
+            datos.append(nueva_categoria)
+
+        with open("inventario.json", "w", encoding="utf-8") as archivo:
+            json.dump(datos, archivo, indent=1)
 
     def ingresar_producto(self, categoria, id_producto, cantidad):
         pass
@@ -127,33 +142,3 @@ class Producto:
     def __init__(self, id_producto, cantidad, categoria):
         pass
 
-
-admin = Administrador("sebas", 23, "sebas")
-
-
-def agregar_usuario():
-
-    usuario = input("Ingrese el nombre del usuario: ")
-    numero_id = input("Ingrese el id del usuario: ")
-    contrasena = input("Ingrese la contrasena del usuario")
-    cargo = input("Ingrese el cargo del usuario")
-    admin.registrar_usuario(usuario, numero_id, contrasena, cargo)
-
-
-def iniciar_sesion():
-    numero_id = input("Ingrese el id")
-    contrasena = input("Ingrese la contrasena")
-    admin.iniciar_sesion(numero_id, contrasena)
-
-
-while True:
-    decision = input(" 1) Ingresar nuevo usuario. 2) Iniciar sesion. 3) Chao. ")
-    if decision == "1":
-        agregar_usuario()
-    if decision == "2":
-        iniciar_sesion()
-    if decision == "3":
-        break
-
-archivo = open("usuarios.json")
-print(archivo)
