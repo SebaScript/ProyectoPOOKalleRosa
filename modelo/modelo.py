@@ -25,20 +25,20 @@ class Administrador(Usuario):
     def __init__(self, nombre, numero_id, contrasena):
         super().__init__(nombre, numero_id, contrasena, 'adminsitrador')
 
-    nuevo_usuario = {"nombre": "",
-                     "numero_id": "",
-                     "contrasena": "",
-                     "cargo": ""}
-
     def registrar_usuario(self, nombre, numero_id, contrasena, cargo):
+
+        nuevo_usuario = {"nombre": "",
+                         "numero_id": "",
+                         "contrasena": "",
+                         "cargo": ""}
+
         with open("usuarios.json", "r", encoding="utf-8") as archivo:
             datos = json.load(archivo)
-
-            self.nuevo_usuario["nombre"] = nombre
-            self.nuevo_usuario["numero_id"] = numero_id
-            self.nuevo_usuario["contrasena"] = contrasena
-            self.nuevo_usuario["cargo"] = cargo
-            datos.append(self.nuevo_usuario)
+            nuevo_usuario["nombre"] = nombre
+            nuevo_usuario["numero_id"] = numero_id
+            nuevo_usuario["contrasena"] = contrasena
+            nuevo_usuario["cargo"] = cargo
+            datos.append(nuevo_usuario)
 
         with open("usuarios.json", "w", encoding="utf-8") as archivo:
             json.dump(datos, archivo)
@@ -83,6 +83,7 @@ class Producto:
 
     def __init__(self, id_producto, cantidad, categoria):
         pass
+
 
 admin = Administrador("sebas", 23, "sebas")
 
