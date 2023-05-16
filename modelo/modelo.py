@@ -52,11 +52,17 @@ class Vendedor(Usuario):
     def __init__(self, nombre, numero_id, contrasena):
         super().__init__(nombre, numero_id, contrasena, 'vendedor')
 
+    def iniciar_sesion(self, numero_id, contrasena):
+        super().iniciar_sesion(numero_id, contrasena)
+
 
 class EncargadoBodega(Usuario):
 
     def __init__(self, nombre, numero_id, contrasena):
         super().__init__(nombre, numero_id, contrasena, 'Encargadobodega')
+
+    def iniciar_sesion(self, numero_id, contrasena):
+        super().iniciar_sesion(numero_id, contrasena)
 
 
 class Factura:
@@ -77,16 +83,6 @@ class Producto:
 
     def __init__(self, id_producto, cantidad, categoria):
         pass
-
-
-facturas = []
-
-
-def crear_factura():
-    cantidad = float(input("Ingrese la cantidad de producto"))
-    id_producto = None
-    factura = Factura()
-
 
 admin = Administrador("sebas", 23, "sebas")
 
@@ -117,3 +113,4 @@ while True:
 
 archivo = open("usuarios.json")
 print(archivo)
+print(admin.nuevo_usuario["nombre"])
