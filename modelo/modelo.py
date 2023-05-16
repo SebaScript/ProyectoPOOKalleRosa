@@ -20,6 +20,10 @@ class Usuario(ABC):
             # Si llega hasta aquí, significa que no encontró ninguna coincidencia
             print("El usuario o contraseña no coinciden")
 
+    @abstractmethod
+    def mostrar_inventario(self, producto):
+        pass
+
 
 class Administrador(Usuario):
     def __init__(self, nombre, numero_id, contrasena):
@@ -34,6 +38,12 @@ class Administrador(Usuario):
 
         with open("usuarios.json", "r", encoding="utf-8") as archivo:
             datos = json.load(archivo)
+
+            # Excepción
+            for usuario in datos:
+                if usuario["numero_id"] == numero_id:
+                    raise Exception
+
             nuevo_usuario["nombre"] = nombre
             nuevo_usuario["numero_id"] = numero_id
             nuevo_usuario["contrasena"] = contrasena
@@ -46,6 +56,15 @@ class Administrador(Usuario):
     def iniciar_sesion(self, numero_id, contrasena):
         super().iniciar_sesion(numero_id, contrasena)
 
+    def mostrar_inventario(self, producto):
+        super().mostrar_inventario(producto)
+
+    def consultar_facturas(self, facturas):
+        pass
+
+    def calcular_precio(self, producto, cantidad):
+        pass
+
 
 class Vendedor(Usuario):
 
@@ -55,6 +74,15 @@ class Vendedor(Usuario):
     def iniciar_sesion(self, numero_id, contrasena):
         super().iniciar_sesion(numero_id, contrasena)
 
+    def mostrar_inventario(self, producto):
+        super().mostrar_inventario(producto)
+
+    def calcular_precio(self, producto, cantidad):
+        pass
+
+    def generar_factura(self, nombre_cliente, id_producto, cantidad, subtotal):
+        pass
+
 
 class EncargadoBodega(Usuario):
 
@@ -63,6 +91,21 @@ class EncargadoBodega(Usuario):
 
     def iniciar_sesion(self, numero_id, contrasena):
         super().iniciar_sesion(numero_id, contrasena)
+
+    def crear_categoria(self, nombre_categoria, precio):
+        pass
+
+    def ingresar_producto(self, categoria, id_producto, cantidad):
+        pass
+
+    def modificar_categoria(self, otro):
+        pass
+
+    def modificar_producto(self, otro):
+        pass
+
+    def mostrar_inventario(self, producto):
+        super().mostrar_inventario(producto)
 
 
 class Factura:
@@ -114,4 +157,3 @@ while True:
 
 archivo = open("usuarios.json")
 print(archivo)
-print(admin.nuevo_usuario["nombre"])
