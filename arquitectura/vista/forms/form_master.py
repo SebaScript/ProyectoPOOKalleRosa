@@ -1,5 +1,4 @@
 import tkinter as tk
-from tkinter.font import BOLD
 import arquitectura.vista.util.generic as utl
 
 
