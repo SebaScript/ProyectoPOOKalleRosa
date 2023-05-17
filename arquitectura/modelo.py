@@ -77,8 +77,21 @@ class Usuario:
         with open("inventario.json", "w", encoding="utf-8") as archivo:
             json.dump(datos, archivo, indent=1)
 
-    def ingresar_producto(self, categoria, id_producto, cantidad):
-        pass
+    def ingresar_producto(self, categoria: str, id_producto: str, cantidad: int):
+        nuevo_producto = {"id_producto": "", "cantidad": 0}
+
+        with open("inventario.json", "r", encoding="utf-8") as archivo:
+            datos = json.load(archivo)
+
+        nuevo_producto["id_producto"] = id_producto
+        nuevo_producto["cantidad"] = cantidad
+
+        for linea in datos:
+            if linea["nombre_categoria"] == categoria:
+                linea["productos"].append(nuevo_producto)
+
+        with open("inventario.json", "w", encoding="utf-8") as archivo:
+            json.dump(datos, archivo, indent=1)
 
     def modificar_categoria(self, otro):
         pass
@@ -101,9 +114,15 @@ class Inventario:
 bodego = Usuario("sebas", "12", "123", "bodega")
 
 while True:
-    dec = input("1 ingresar categoria")
+    dec = input("1 ingresar categoria, 2 Ingresar producto")
     if dec == "1":
         nombre = input("Nombre categoria: ")
         precio = input("precio categoria")
         bodego.crear_categoria(nombre, precio)
+    elif dec == "2":
+        categoria = input("Categoria producto: ")
+        id_prod = input("ID producto: ")
+        cantidad = int(input("Cantidad producto: "))
+        bodego.ingresar_producto(categoria, id_prod, cantidad)
+
 

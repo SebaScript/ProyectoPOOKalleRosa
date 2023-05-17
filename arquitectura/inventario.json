@@ -8,5 +8,44 @@
   "nombre_categoria": "sbdv",
   "productos": [],
   "precio": "jjur"
+ },
+ {
+  "nombre_categoria": "123",
+  "productos": [],
+  "precio": "23"
+ },
+ {
+  "nombre_categoria": "hola",
+  "productos": [
+   {
+    "id_producto": "213",
+    "cantidad": 234
+   },
+   {
+    "id_producto": "dgh",
+    "cantidad": 214
+   }
+  ],
+  "precio": 10
+ },
+ {
+  "nombre_categoria": "90",
+  "productos": [],
+  "precio": 12
+ },
+ {
+  "nombre_categoria": "12",
+  "productos": [],
+  "precio": 343
+ },
+ {
+  "nombre_categoria": "sf",
+  "productos": [],
+  "precio": 234
+ },
+ {
+  "nombre_categoria": "dggh",
+  "productos": [],
+  "precio": 45
  }
 ]
