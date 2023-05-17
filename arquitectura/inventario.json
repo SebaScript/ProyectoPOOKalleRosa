@@ -2,24 +2,24 @@
  {
   "nombre_categoria": "sebas{",
   "productos": [],
-  "precio": "aseas"
+  "precio": "3456"
  },
  {
   "nombre_categoria": "sbdv",
   "productos": [],
-  "precio": "jjur"
+  "precio": 0
  },
  {
   "nombre_categoria": "123",
   "productos": [],
-  "precio": "23"
+  "precio": 0
  },
  {
   "nombre_categoria": "hola",
   "productos": [
    {
     "id_producto": "213",
-    "cantidad": 234
+    "cantidad": 346457
    },
    {
     "id_producto": "dgh",
@@ -27,25 +27,5 @@
    }
   ],
   "precio": 10
- },
- {
-  "nombre_categoria": "90",
-  "productos": [],
-  "precio": 12
- },
- {
-  "nombre_categoria": "12",
-  "productos": [],
-  "precio": 343
- },
- {
-  "nombre_categoria": "sf",
-  "productos": [],
-  "precio": 234
- },
- {
-  "nombre_categoria": "dggh",
-  "productos": [],
-  "precio": 45
  }
 ]

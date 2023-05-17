@@ -28,5 +28,11 @@
   "numero_id": "fgd",
   "contrasena": "asf",
   "cargo": "gg"
+ },
+ {
+  "nombre": "seb",
+  "numero_id": "12345",
+  "contrasena": "122",
+  "cargo": "ola"
  }
 ]
