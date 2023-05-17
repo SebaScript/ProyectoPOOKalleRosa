@@ -53,8 +53,3 @@ class ingresar_producto:
         ingresar.pack(fill=tk.X, padx=20, pady=20)
 
         self.ventana.mainloop()
-
-
-if __name__ == "__main__":
-    ingresar_producto()
-

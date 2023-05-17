@@ -4,12 +4,13 @@ from tkinter.font import BOLD
 import arquitectura.vista.util.generic as utl
 
 
-class calcular_Precio:
+def calcular_precio(id_productos: str, cantidades: str):
+    # Realiza las acciones necesarias para calcular el precio (sin utilizar JSON)
+    total_con_descuento = 0  # Aquí iría el cálculo real
+    messagebox.showinfo(message=f"Precio total con descuento: {total_con_descuento}", title="Mensaje")
 
-    def calcular_precio(self, id_productos: str, cantidades: str):
-        # Realiza las acciones necesarias para calcular el precio (sin utilizar JSON)
-        total_con_descuento = 0  # Aquí iría el cálculo real
-        messagebox.showinfo(message=f"Precio total con descuento: {total_con_descuento}", title="Mensaje")
+
+class calcular_Precio:
 
     def __init__(self):
         self.ventana = tk.Tk()
@@ -44,7 +45,7 @@ class calcular_Precio:
         self.cantidades.pack(fill=tk.X, padx=20, pady=10)
 
         calcular = tk.Button(frame_form_fill, text="Calcular Precio", font=('Times', 15, BOLD), bg='#3a7ff6', bd=0,
-                             fg="#fff", command=lambda: self.calcular_precio(self.id_productos.get(), self.cantidades.get()))
+                             fg="#fff", command=lambda: calcular_precio(self.id_productos.get(), self.cantidades.get()))
         calcular.pack(fill=tk.X, padx=20, pady=20)
 
         self.ventana.mainloop()

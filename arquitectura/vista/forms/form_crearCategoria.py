@@ -7,7 +7,7 @@ import arquitectura.vista.util.generic as utl
 class crear_categoria:
 
     def crear_categoria(self, nombre_categoria: str, precio: float):
-        # Realiza las acciones necesarias para agregar la categoría (sin utilizar JSON)
+        # Realize las acciones necesarias para agregar la categoría (sin utilizar JSON)
         messagebox.showinfo(message="Categoría creada correctamente", title="Mensaje")
 
     def __init__(self):

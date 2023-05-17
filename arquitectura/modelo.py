@@ -159,7 +159,7 @@ class Factura:
     @staticmethod
     def generar_factura(nombre_cliente, id_productos, cantidades, total_con_descuento):
         # Calculamos el subtotal
-        subtotal = self.calcular_precio(id_producto, cantidad)
+        subtotal = calcular_precio(id_producto, cantidad)
         # Creamos la factura
         factura = {
             "nombre_cliente": nombre_cliente,

@@ -4,15 +4,16 @@ import arquitectura.vista.util.generic as utl
 from arquitectura.vista.forms.form_registro import RegistroVentana
 from arquitectura.vista.forms.form_inicio_sesion import App
 
+
+def registrarse():
+    RegistroVentana()
+
+
 class InicioVentana:
 
     def iniciar_sesion(self):
         self.ventana_inicio.destroy()
         App()
-
-    def registrarse(self):
-        self.ventana_inicio.destroy()
-        RegistroVentana()
 
     def __init__(self):
         self.ventana_inicio = tk.Tk()
@@ -40,12 +41,13 @@ class InicioVentana:
         frame_botones = tk.Frame(self.ventana_inicio, bd=0, relief=tk.SOLID, bg='#fcfcfc')
         frame_botones.pack(side="top", expand=tk.YES, fill=tk.BOTH)
 
-        btn_iniciar_sesion = tk.Button(frame_botones, text="Iniciar sesión", font=('Times', 15, BOLD), bg='#3a7ff6', bd=0,
+        btn_iniciar_sesion = tk.Button(frame_botones, text="Iniciar sesión", font=('Times', 15, BOLD), bg='#3a7ff6',
+                                       bd=0,
                                        fg="#fff", command=self.iniciar_sesion)
         btn_iniciar_sesion.pack(fill=tk.X, padx=20, pady=10)
 
         btn_registrarse = tk.Button(frame_botones, text="Registrarse", font=('Times', 15, BOLD), bg='#3a7ff6', bd=0,
-                                    fg="#fff", command=self.registrarse)
+                                    fg="#fff", command=registrarse)
         btn_registrarse.pack(fill=tk.X, padx=20, pady=10)
 
         self.ventana_inicio.mainloop()
