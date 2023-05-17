@@ -6,6 +6,9 @@ from arquitectura.vista.forms.from_modificarCategoria import modificar_categoria
 from arquitectura.vista.forms.from_modificarProducto import modificar_producto
 from arquitectura.vista.forms.from_ingresarProducto import ingresar_producto
 from arquitectura.vista.forms.from_generarFactura import generar_factura
+from arquitectura.vista.forms.form_mostrar_Inventario import mostrar_inventario
+from arquitectura.vista.forms.form_consultarFacturas import consultar_facturas
+from arquitectura.vista.forms.form_buscarProducto import buscar_producto
 
 
 class MasterPanel:
@@ -25,7 +28,7 @@ class MasterPanel:
 
         botones = ["calcular Precio", "crear categoria", "modificar categoria", "modificar producto", "ingresar "
                                                                                                       "producto",
-                   "generar factura", "Botón 7", "Botón 8", "Botón 9"]
+                   "generar factura", "mostrar inventario", "consultar facturas", "buscar producto"]
 
         # Funciones personalizadas para los botones
         def funcion_boton_1():
@@ -47,13 +50,13 @@ class MasterPanel:
             generar_factura()
 
         def funcion_boton_7():
-            print("Se ha presionado el Botón 1")
+            mostrar_inventario()
 
         def funcion_boton_8():
-            print("Se ha presionado el Botón 1")
+            consultar_facturas()
 
         def funcion_boton_9():
-            print("Se ha presionado el Botón 1")
+            buscar_producto()
 
         for boton_texto, funcion in zip(botones, [funcion_boton_1, funcion_boton_2, funcion_boton_3, funcion_boton_4,
                                                   funcion_boton_5, funcion_boton_6, funcion_boton_7, funcion_boton_8,
