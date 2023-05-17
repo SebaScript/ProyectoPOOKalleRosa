@@ -5,7 +5,7 @@ import arquitectura.vista.util.generic as utl
 from arquitectura.vista.forms.form_master import MasterPanel
 
 
-class App:
+class modificar_producto:
 
     def modificar_producto(self, categoria: str, id_producto: str, nueva_cantidad: int):
         # Realiza las acciones necesarias para modificar el producto (sin utilizar JSON)
@@ -57,4 +57,4 @@ class App:
 
 
 if __name__ == "__main__":
-    App()
+    modificar_producto()

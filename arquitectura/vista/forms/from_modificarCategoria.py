@@ -5,7 +5,7 @@ import arquitectura.vista.util.generic as utl
 from arquitectura.vista.forms.form_master import MasterPanel
 
 
-class App:
+class modificar_categoria:
 
     def modificar_categoria(self, categoria: str, nuevo_precio: float):
         # Realiza las acciones necesarias para modificar la categoría (sin utilizar JSON)
@@ -51,4 +51,4 @@ class App:
 
 
 if __name__ == "__main__":
-    App()
+    modificar_categoria()

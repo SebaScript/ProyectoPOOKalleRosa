@@ -5,7 +5,7 @@ import arquitectura.vista.util.generic as utl
 from arquitectura.vista.forms.form_master import MasterPanel
 
 
-class App:
+class crear_categoria:
 
     def crear_categoria(self, nombre_categoria: str, precio: float):
         # Realiza las acciones necesarias para agregar la categoría (sin utilizar JSON)
@@ -51,4 +51,4 @@ class App:
 
 
 if __name__ == "__main__":
-    App()
+    crear_categoria()

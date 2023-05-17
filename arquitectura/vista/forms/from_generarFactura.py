@@ -5,7 +5,7 @@ import arquitectura.vista.util.generic as utl
 from arquitectura.vista.forms.form_master import MasterPanel
 
 
-class App:
+class generar_factura:
 
     def calcular_precio(self, id_productos: str, cantidades: str):
         # Realiza las acciones necesarias para calcular el precio (sin utilizar JSON)
@@ -68,4 +68,4 @@ class App:
 
 
 if __name__ == "__main__":
-    App()
+    generar_factura()

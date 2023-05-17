@@ -4,7 +4,7 @@ from tkinter.font import BOLD
 import arquitectura.vista.util.generic as utl
 
 
-class App:
+class ingresar_producto:
 
     def ingresar_producto(self, categoria: str, id_producto: str, cantidad: int):
 
@@ -56,5 +56,5 @@ class App:
 
 
 if __name__ == "__main__":
-    App()
+    ingresar_producto()
 
