@@ -1,3 +1,3 @@
-from arquitectura.vista.forms.form_registroyinicio import App
+from arquitectura.vista.forms.form_inicio import InicioVentana
 
-App()
+InicioVentana()

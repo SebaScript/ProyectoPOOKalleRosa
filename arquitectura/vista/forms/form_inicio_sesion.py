@@ -10,7 +10,7 @@ class App:
     def verificar(self):
         usu = self.usuario.get()
         password = self.password.get()
-        if (usu == "buenas" and password == "1234"):
+        if (usu == "h" and password == "1234"):
             self.ventana.destroy()
             MasterPanel()
         else:
