@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from tkinter.font import BOLD
 import arquitectura.vista.util.generic as utl
-from arquitectura.vista.forms.form_master import MasterPanel
+
 
 
 class generar_factura:
