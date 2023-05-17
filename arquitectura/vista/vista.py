@@ -1,4 +1,3 @@
-from arquitectura.vista.forms.form_master import MasterPanel
+from arquitectura.vista.forms.form_registroyinicio import App
 
-MasterPanel()
-
+App()
