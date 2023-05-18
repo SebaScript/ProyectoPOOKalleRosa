@@ -2,11 +2,10 @@ import json
 
 
 class Registro:
-    def __init__(self, nombre: str, numero_id: int, contrasena: str, cargo: str):
+    def __init__(self, nombre: str, numero_id: int, contrasena: str):
         self.nombre: str = nombre
         self.numero_id: int = numero_id
         self.contrasena: str = contrasena
-        self.cargo: str = cargo
 
     def registrar_usuario(self):
 
@@ -21,7 +20,6 @@ class Registro:
             nuevo_usuario["nombre"] = self.nombre
             nuevo_usuario["numero_id"] = self.numero_id
             nuevo_usuario["contrasena"] = self.contrasena
-            nuevo_usuario["cargo"] = self.cargo
             datos.append(nuevo_usuario)
 
         with open("usuarios.json", "w", encoding="utf-8") as archivo:
@@ -178,7 +176,7 @@ class Factura:
             "precio": ""
         }
 
-        with open("facturas.json", 'r', encoding="utf-8") as archivo:
+        with open("vista/facturas.json", 'r', encoding="utf-8") as archivo:
             datos = json.load(archivo)
 
             factura["nombre_cliente"] = self.nombre_cliente

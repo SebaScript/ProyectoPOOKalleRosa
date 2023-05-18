@@ -3,14 +3,17 @@ from tkinter import ttk, messagebox
 from tkinter.font import BOLD
 import arquitectura.vista.util.generic as utl
 from arquitectura.vista.forms.form_master import MasterPanel
+from arquitectura.modelo import UsuarioInicioSesion
 
 
 class App:
 
     def verificar(self):
-        usu = self.usuario.get()
+
+        usu = int(self.usuario.get())
         password = self.password.get()
-        if usu == "h" and password == "1234":
+        Usuario = UsuarioInicioSesion(usu, password)
+        if Usuario.iniciar_sesion() == True:
             self.ventana.destroy()
             MasterPanel()
         else:
@@ -43,7 +46,7 @@ class App:
         frame_form_fill = tk.Frame(frame_form, height=50, bd=0, relief=tk.SOLID, bg='#fcfcfc')
         frame_form_fill.pack(side="bottom", expand=tk.YES, fill=tk.BOTH)
 
-        etiqueta_usuario = tk.Label(frame_form_fill, text="Usuario", font=('Times', 14), fg="#666a88", bg='#fcfcfc',
+        etiqueta_usuario = tk.Label(frame_form_fill, text="Id_usuario", font=('Times', 14), fg="#666a88", bg='#fcfcfc',
                                     anchor="w")
         etiqueta_usuario.pack(fill=tk.X, padx=20, pady=5)
         self.usuario = ttk.Entry(frame_form_fill, font=('Times', 14))

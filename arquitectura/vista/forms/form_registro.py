@@ -2,14 +2,16 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter.font import BOLD
 import arquitectura.vista.util.generic as utl
-
+from arquitectura.modelo import Registro
 
 class RegistroVentana:
 
     def guardar_registro(self):
         nombre = self.nombre.get()
-        numero_id = self.numero_id.get()
+        numero_id = int(self.numero_id.get())
         contrasena = self.contrasena.get()
+        registro = Registro(nombre, numero_id, contrasena)
+        registro.registrar_usuario()
 
     def __init__(self):
         self.ventana_registro = tk.Toplevel()
