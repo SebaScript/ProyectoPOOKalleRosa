@@ -1,25 +1,14 @@
 import json
 
 
-class Usuario:
-    def __init__(self, nombre: str, numero_id: str, contrasena: str, cargo: str):
+class Registro:
+    def __init__(self, nombre: str, numero_id: int, contrasena: str, cargo: str):
         self.nombre: str = nombre
-        self.numero_id: str = numero_id
+        self.numero_id: int = numero_id
         self.contrasena: str = contrasena
         self.cargo: str = cargo
 
-    @staticmethod
-    def iniciar_sesion(numero_id: str, contrasena: str):
-        with open("usuarios.json", "r", encoding="utf-8") as archivo:
-            datos = json.load(archivo)
-            for linea in datos:
-                if linea["numero_id"] == numero_id and linea["contrasena"] == contrasena:
-                    print("Inicio de sesión exitoso")
-                    return  # Si encuentra una coincidencia, termina la función aquí
-            # Si llega hasta aquí, significa que no encontró ninguna coincidencia
-            print("El usuario o contraseña no coinciden")
-
-    def registrar_usuario(self, nombre: str, numero_id: str, contrasena: str, cargo: str):
+    def registrar_usuario(self):
 
         nuevo_usuario = {"nombre": "",
                          "numero_id": "",
@@ -37,6 +26,23 @@ class Usuario:
 
         with open("usuarios.json", "w", encoding="utf-8") as archivo:
             json.dump(datos, archivo, indent=1)
+
+
+class UsuarioInicioSesion:
+
+    def __init__(self, numero_id: int, contrasena: str):
+        self.numero_id: int = numero_id
+        self.contrasena: str = contrasena
+
+    def iniciar_sesion(self):
+        with open("usuarios.json", "r", encoding="utf-8") as archivo:
+            datos = json.load(archivo)
+            for linea in datos:
+                if linea["numero_id"] == self.numero_id and linea["contrasena"] == self.contrasena:
+                    print("Inicio de sesión exitoso")
+                    self.nombre = linea["nombre"]
+                    return True
+            return False
 
 
 class Inventario:
@@ -125,8 +131,12 @@ class Inventario:
 
 class Factura:
 
-    @staticmethod
-    def calcular_precio(id_productos: list, cantidades: list):
+    def __init__(self, nombre_cliente: str, id_productos: list, cantidades: list):
+        self.nombre_cliente: str = nombre_cliente
+        self.id_productos: list = id_productos
+        self.cantidades: list = cantidades
+
+    def calcular_precio(self):
 
         total: float = 0
         total_con_descuento: float = 0
@@ -134,7 +144,7 @@ class Factura:
         with open("inventario.json", "r", encoding="utf-8") as archivo:
             datos = json.load(archivo)
 
-            for id_producto, cantidad in zip(id_productos, cantidades):
+            for id_producto, cantidad in zip(self.id_productos, self.cantidades):
                 for obj in datos:
                     productos = obj["productos"]
                     for producto in productos:
@@ -143,7 +153,7 @@ class Factura:
                             subtotal = precio * cantidad
                             total += subtotal
 
-        cantidad_total: int = sum(cantidades)
+        cantidad_total: int = sum(self.cantidades)
         if cantidad_total < 6:
             total_con_descuento = total
         elif 6 <= cantidad_total < 12:
@@ -156,48 +166,60 @@ class Factura:
             return False
         return total_con_descuento
 
-    @staticmethod
-    def generar_factura(nombre_cliente, id_productos, cantidades, total_con_descuento):
-        # Calculamos el subtotal
-        subtotal = calcular_precio(id_producto, cantidad)
-        # Creamos la factura
+    def generar_factura(self, nombre_vendedor):
+
+        precio = self.calcular_precio()
+
         factura = {
-            "nombre_cliente": nombre_cliente,
-            "id_producto": id_producto,
-            "cantidad": cantidad,
-            "subtotal": subtotal
+            "nombre_cliente": "",
+            "nombre_vendedor": "",
+            "id_productos": "",
+            "cantidades": "",
+            "precio": ""
         }
-        # Guardamos la factura en un archivo .json
-        with open(f'{nombre_cliente}_factura.json', 'w') as f:
-            json.dump(factura, f)
+
+        with open("facturas.json", 'r', encoding="utf-8") as archivo:
+            datos = json.load(archivo)
+
+            factura["nombre_cliente"] = self.nombre_cliente
+            factura["nombre_vendedor"] = nombre_vendedor
+            factura["id_productos"] = self.id_productos
+            factura["cantidades"] = self.cantidades
+            factura["precio"] = precio
+
+            datos.append(factura)
+
+        with open("facturas.json", 'w') as f:
+            json.dump(datos, f, indent=1)
         return factura
 
     @staticmethod
-    def consultar_facturas(self, facturas):
+    def consultar_facturas():
 
-        with open("facturas.json", "r", encoding= "utf-8") as archivo:
+        with open("facturas.json", "r", encoding="utf-8") as archivo:
             datos = json.load(archivo)
 
-        return datos
+            return datos
 
-usuario = Usuario("", "", "", "")
+
 x = Inventario
 
 while True:
     dec = input("1 Registrar usuario, 2 Iniciar sesion 3 ingresar categoria, 4 Ingresar producto, "
                 "5 Mostrar inventario, 6 modificar precio categoria, 7 Modificar cantidad producto, "
-                "8 Calcular precio pedido, 9 buscar producto por ID, 10 ")
+                "8 Calcular precio pedido, 9 buscar producto por ID, 10 Generar factura 11 Mostrar facturas")
     if dec == "1":
         nombre = input("Nombre nuevo usuario: ")
-        numero_id = input("Numero_id nuevo usuario: ")
+        numero_id = int(input("Numero_id nuevo usuario: "))
         contrasena = input("Contrasena nuevo usuario: ")
         cargo = input("Cargo nuevo usuario: ")
-        usuario = Usuario(nombre, numero_id, contrasena, cargo)
-        usuario.registrar_usuario(nombre, numero_id, contrasena, cargo)
+        usuario = Registro(nombre, numero_id, contrasena, cargo)
+        usuario.registrar_usuario()
     elif dec == "2":
-        numero_id = input("Numero_id usuario: ")
+        numero_id = int(input("Numero_id usuario: "))
         contrasena = input("Contrasena usuario: ")
-        usuario.iniciar_sesion(numero_id, contrasena)
+        usuario_inicio_sesion = UsuarioInicioSesion(numero_id, contrasena)
+        usuario_inicio_sesion.iniciar_sesion()
     elif dec == "3":
         nombre = input("Nombre categoria: ")
         precio = float(input("precio categoria"))
@@ -220,22 +242,40 @@ while True:
         nueva_cantidad = int(input("Nueva cantidad de producto"))
         x.modificar_producto(categoria, id_prod, nueva_cantidad)
     elif dec == "8":
-        id_productos = []
-        cantidades = []
+        id_productos_calcular = []
+        cantidades_calcular = []
         while True:
             decision = input("¿Quiere ingresar un nuevo producto pa calcular precio? 1) Si, 2) No")
             if decision == "1":
-                id_producto = input("Ingrese el id de producto")
-                cantidad = int(input("Ingrese la cantidad"))
-                id_productos.append(id_producto)
-                cantidades.append(cantidad)
-            if decision == "2":
-                Factura.calcular_precio(id_productos, cantidades)
-            print(id_productos)
-            print(cantidades)
-            print(Factura.calcular_precio(id_productos, cantidades))
+                id_producto = input("Ingrese el id de producto: ")
+                cantidad = int(input("Ingrese la cantidad: "))
+                id_productos_calcular.append(id_producto)
+                cantidades_calcular.append(cantidad)
+            elif decision == "2":
+                factura = Factura("", id_productos_calcular, cantidades_calcular)
+                print(id_productos_calcular)
+                print(cantidades_calcular)
+                print(factura.calcular_precio())
+                break
     elif dec == "9":
         id_a_buscar = input("Ingrese el id a buscar")
         x.buscar_producto(id_a_buscar)
+    elif dec == "10":
+        id_productos_factura = []
+        cantidades_factura = []
+        nombre_cliente = input("Ingrese el nombre del cliente: ")
+        nombre_vendedor = input("Ingrese el nombre del vendedor. ")
+        while True:
+            decision = input("¿Quiere ingresar un nuevo producto pa la factura? 1) Si, 2) No")
+            if decision == "1":
+                id_producto = input("Ingrese el id de producto: ")
+                cantidad = int(input("Ingrese la cantidad: "))
+                id_productos_factura.append(id_producto)
+                cantidades_factura.append(cantidad)
+            elif decision == "2":
+                factura = Factura(nombre_cliente, id_productos_factura, cantidades_factura)
+                print(factura.generar_factura(nombre_vendedor))
+                break
 
-
+    elif dec == "11":
+        print(Factura.consultar_facturas())
