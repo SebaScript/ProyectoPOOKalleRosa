@@ -4,6 +4,7 @@ from tkinter.font import BOLD
 import arquitectura.vista.util.generic as utl
 from arquitectura.modelo import Registro
 
+
 class RegistroVentana:
 
     def guardar_registro(self):

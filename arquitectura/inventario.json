@@ -1,0 +1,16 @@
+[
+ {
+  "nombre_categoria": "sa",
+  "productos": [
+   {
+    "id_producto": "1",
+    "cantidad": 20
+   },
+   {
+    "id_producto": "1",
+    "cantidad": 20
+   }
+  ],
+  "precio": 30.0
+ }
+]

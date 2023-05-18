@@ -2,12 +2,16 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from tkinter.font import BOLD
 import arquitectura.vista.util.generic as utl
+from arquitectura.modelo import Inventario
 
 
 class crear_categoria:
 
     def crear_categoria(self, nombre_categoria: str, precio: float):
-        # Realize las acciones necesarias para agregar la categoría (sin utilizar JSON)
+        nombre_categoria = self.nombre_categoria.get()
+        precio = float(self.precio.get())
+        categoria = Inventario()
+        categoria.crear_categoria(nombre_categoria, precio)
         messagebox.showinfo(message="Categoría creada correctamente", title="Mensaje")
 
     def __init__(self):
