@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 from modelo import UsuarioInicioSesion, Registro, Inventario
 
-
+p
 class Aplicacion:
     def __init__(self, root):
         self.root = root
