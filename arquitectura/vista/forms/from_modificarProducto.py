@@ -2,12 +2,15 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from tkinter.font import BOLD
 import arquitectura.vista.util.generic as utl
+from arquitectura.modelo import Inventario
 
+class ModificarProducto:
 
-class modificar_producto:
-
-    def modificar_producto(self, categoria: str, id_producto: str, nueva_cantidad: int):
-        # Realiza las acciones necesarias para modificar el producto (sin utilizar JSON)
+    def modificar_producto(self, categoria: str, id_producto: int, nueva_cantidad: int):
+        categoria = self.categoria.get()
+        id_producto = int(self.categoria.get())
+        nueva_cantidad = int(self.nueva_cantidad.get())
+        Inventario.modificar_producto(categoria, id_producto, nueva_cantidad)
         messagebox.showinfo(message="Producto modificado correctamente", title="Mensaje")
 
     def __init__(self):
@@ -56,4 +59,4 @@ class modificar_producto:
 
 
 if __name__ == "__main__":
-    modificar_producto()
+    ModificarProducto()

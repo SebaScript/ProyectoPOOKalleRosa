@@ -5,12 +5,11 @@ import arquitectura.vista.util.generic as utl
 
 
 def calcular_precio(id_productos: str, cantidades: str):
-    # Realiza las acciones necesarias para calcular el precio (sin utilizar JSON)
-    total_con_descuento = 0  # Aquí iría el cálculo real
+    total_con_descuento = 0
     messagebox.showinfo(message=f"Precio total con descuento: {total_con_descuento}", title="Mensaje")
 
 
-class calcular_Precio:
+class CalcularPrecio:
 
     def __init__(self):
         self.ventana = tk.Tk()
@@ -52,4 +51,4 @@ class calcular_Precio:
 
 
 if __name__ == "__main__":
-    calcular_Precio()
+    CalcularPrecio()

@@ -4,11 +4,11 @@ from tkinter.font import BOLD
 import arquitectura.vista.util.generic as utl
 
 
-
-class generar_factura:
+class GenerarFactura:
 
     def calcular_precio(self, id_productos: str, cantidades: str):
-        # Realiza las acciones necesarias para calcular el precio (sin utilizar JSON)
+        id_productos = self.id_productos.get()
+        cantidades = self.cantidades.get()
         total_con_descuento = 0  # Aquí iría el cálculo real
         return total_con_descuento
 
@@ -68,4 +68,4 @@ class generar_factura:
 
 
 if __name__ == "__main__":
-    generar_factura()
+    GenerarFactura()

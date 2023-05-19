@@ -2,12 +2,16 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from tkinter.font import BOLD
 import arquitectura.vista.util.generic as utl
+from arquitectura.modelo import Inventario
 
 
-class ingresar_producto:
+class IngresarProducto:
 
-    def ingresar_producto(self, categoria: str, id_producto: str, cantidad: int):
-
+    def ingresar_producto(self, categoria: str, id_producto: int, cantidad: int):
+        categoria = self.categoria.get()
+        id_producto = int(self.id_producto.get())
+        cantidad = int(self.cantidad.get())
+        Inventario.ingresar_producto(categoria, id_producto, cantidad)
         messagebox.showinfo(message="Producto agregado correctamente", title="Mensaje")
 
     def __init__(self):

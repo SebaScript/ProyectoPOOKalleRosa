@@ -5,7 +5,7 @@ import arquitectura.vista.util.generic as utl
 from arquitectura.modelo import Inventario
 
 
-class crear_categoria:
+class CrearCategoria:
 
     def crear_categoria(self, nombre_categoria: str, precio: float):
         nombre_categoria = self.nombre_categoria.get()
@@ -54,4 +54,4 @@ class crear_categoria:
 
 
 if __name__ == "__main__":
-    crear_categoria()
+    CrearCategoria()

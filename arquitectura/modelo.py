@@ -11,22 +11,18 @@ class Registro:
 
         nuevo_usuario = {"nombre": "",
                          "numero_id": "",
-                         "contrasena": "",
-                         "cargo": ""}
+                         "contrasena": ""
+                         }
 
-        with open("vista/usuarios.json", "r", encoding="utf-8") as archivo:
+        with open("C:\\Users\\Usuario\\PycharmProjects\\ProyectoPOOKalleRosa2\\arquitectura\\Archivos\\usuarios.json", "r", encoding="utf-8") as archivo:
             datos = json.load(archivo)
-
-            for usuario in datos:
-                if usuario["numero_id"] == self.numero_id:
-                    raise ValueError
 
             nuevo_usuario["nombre"] = self.nombre
             nuevo_usuario["numero_id"] = self.numero_id
             nuevo_usuario["contrasena"] = self.contrasena
             datos.append(nuevo_usuario)
 
-        with open("vista/usuarios.json", "w", encoding="utf-8") as archivo:
+        with open("C:\\Users\\Usuario\\PycharmProjects\\ProyectoPOOKalleRosa2\\arquitectura\\Archivos\\usuarios.json", "w", encoding="utf-8") as archivo:
             json.dump(datos, archivo, indent=1)
 
 
@@ -36,12 +32,11 @@ class UsuarioInicioSesion:
         self.numero_id: int = numero_id
         self.contrasena: str = contrasena
 
-    def iniciar_sesion(self):
-        with open("vista/usuarios.json", "r", encoding="utf-8") as archivo:
+    def iniciar_sesion(self) -> bool:
+        with open("C:\\Users\\Usuario\\PycharmProjects\\ProyectoPOOKalleRosa2\\arquitectura\\Archivos\\usuarios.json", "r", encoding="utf-8") as archivo:
             datos = json.load(archivo)
             for linea in datos:
                 if linea["numero_id"] == self.numero_id and linea["contrasena"] == self.contrasena:
-                    print("Inicio de sesión exitoso")
                     self.nombre = linea["nombre"]
                     return True
             return False
@@ -50,8 +45,8 @@ class UsuarioInicioSesion:
 class Inventario:
 
     @staticmethod
-    def buscar_producto(id_producto):
-        with open('inventario.json') as file:
+    def buscar_producto(id_producto) -> bool:
+        with open('C:\\Users\\Usuario\\PycharmProjects\\ProyectoPOOKalleRosa2\\arquitectura\\Archivos\\inventario.json') as file:
             data = json.load(file)
 
             for obj in data:
@@ -66,7 +61,7 @@ class Inventario:
     @staticmethod
     def mostrar_inventario():
 
-        with open("inventario.json", "r", encoding="utf-8") as archivo:
+        with open("C:\\Users\\Usuario\\PycharmProjects\\ProyectoPOOKalleRosa2\\arquitectura\\Archivos\\inventario.json", "r", encoding="utf-8") as archivo:
             datos = json.load(archivo)
 
             return datos
@@ -75,21 +70,21 @@ class Inventario:
     def crear_categoria(nombre_categoria: str, precio: float):
         nueva_categoria = {"nombre_categoria": nombre_categoria, "productos": [], "precio": precio}
 
-        with open("inventario.json", "r", encoding="utf-8") as archivo:
+        with open("C:\\Users\\Usuario\\PycharmProjects\\ProyectoPOOKalleRosa2\\arquitectura\\Archivos\\inventario.json", "r", encoding="utf-8") as archivo:
             datos = json.load(archivo)
 
             nueva_categoria["nombre_categoria"] = nombre_categoria
             nueva_categoria["precio"] = precio
             datos.append(nueva_categoria)
 
-        with open("inventario.json", "w", encoding="utf-8") as archivo:
+        with open("C:\\Users\\Usuario\\PycharmProjects\\ProyectoPOOKalleRosa2\\arquitectura\\Archivos\\inventario.json", "w", encoding="utf-8") as archivo:
             json.dump(datos, archivo, indent=1)
 
     @staticmethod
-    def ingresar_producto(categoria: str, id_producto: str, cantidad: int):
+    def ingresar_producto(categoria: str, id_producto: int, cantidad: int):
         nuevo_producto = {"id_producto": "", "cantidad": 0}
 
-        with open("inventario.json", "r", encoding="utf-8") as archivo:
+        with open("C:\\Users\\Usuario\\PycharmProjects\\ProyectoPOOKalleRosa2\\arquitectura\\Archivos\\inventario.json", "r", encoding="utf-8") as archivo:
             datos = json.load(archivo)
 
             nuevo_producto["id_producto"] = id_producto
@@ -99,26 +94,26 @@ class Inventario:
                 if linea["nombre_categoria"] == categoria:
                     linea["productos"].append(nuevo_producto)
 
-        with open("inventario.json", "w", encoding="utf-8") as archivo:
+        with open("C:\\Users\\Usuario\\PycharmProjects\\ProyectoPOOKalleRosa2\\arquitectura\\Archivos\\inventario.json", "w", encoding="utf-8") as archivo:
             json.dump(datos, archivo, indent=1)
 
     @staticmethod
     def modificar_categoria(categoria: str, nuevo_precio: float):
 
-        with open("inventario.json", "r", encoding="utf-8") as archivo:
+        with open("C:\\Users\\Usuario\\PycharmProjects\\ProyectoPOOKalleRosa2\\arquitectura\\Archivos\\inventario.json", "r", encoding="utf-8") as archivo:
             datos = json.load(archivo)
 
             for linea in datos:
                 if linea["nombre_categoria"] == categoria:
                     linea["precio"] = nuevo_precio
 
-        with open("inventario.json", "w", encoding="utf-8") as archivo:
+        with open("C:\\Users\\Usuario\\PycharmProjects\\ProyectoPOOKalleRosa2\\arquitectura\\Archivos\\inventario.json", "w", encoding="utf-8") as archivo:
             json.dump(datos, archivo, indent=1)
 
     @staticmethod
-    def modificar_producto(categoria, id_producto: str, nueva_cantidad: int):
+    def modificar_producto(categoria, id_producto: int, nueva_cantidad: int):
 
-        with open("inventario.json", "r", encoding="utf-8") as archivo:
+        with open("C:\\Users\\Usuario\\PycharmProjects\\ProyectoPOOKalleRosa2\\arquitectura\\Archivos\\inventario.json", "r", encoding="utf-8") as archivo:
             datos = json.load(archivo)
 
             for dicc in datos:
@@ -127,7 +122,7 @@ class Inventario:
                         if i["id_producto"] == id_producto:
                             i["cantidad"] = nueva_cantidad
 
-        with open("inventario.json", "w", encoding="utf-8") as archivo:
+        with open("C:\\Users\\Usuario\\PycharmProjects\\ProyectoPOOKalleRosa2\\arquitectura\\Archivos\\inventario.json", "w", encoding="utf-8") as archivo:
             json.dump(datos, archivo, indent=1)
 
 
@@ -138,12 +133,12 @@ class Factura:
         self.id_productos: list = id_productos
         self.cantidades: list = cantidades
 
-    def calcular_precio(self):
+    def calcular_precio(self) -> float:
 
         total: float = 0
         total_con_descuento: float = 0
 
-        with open("inventario.json", "r", encoding="utf-8") as archivo:
+        with open("C:\\Users\\Usuario\\PycharmProjects\\ProyectoPOOKalleRosa2\\arquitectura\\Archivos\\inventario.json", "r", encoding="utf-8") as archivo:
             datos = json.load(archivo)
 
             for id_producto, cantidad in zip(self.id_productos, self.cantidades):
@@ -180,7 +175,7 @@ class Factura:
             "precio": ""
         }
 
-        with open("facturas.json", 'r', encoding="utf-8") as archivo:
+        with open("C:\\Users\\Usuario\\PycharmProjects\\ProyectoPOOKalleRosa2\\arquitectura\\Archivos\\facturas.json", 'r', encoding="utf-8") as archivo:
             datos = json.load(archivo)
 
             factura["nombre_cliente"] = self.nombre_cliente
@@ -191,14 +186,14 @@ class Factura:
 
             datos.append(factura)
 
-        with open("facturas.json", 'w') as f:
+        with open("C:\\Users\\Usuario\\PycharmProjects\\ProyectoPOOKalleRosa2\\arquitectura\\Archivos\\facturas.json", 'w') as f:
             json.dump(datos, f, indent=1)
         return factura
 
     @staticmethod
     def consultar_facturas():
 
-        with open("facturas.json", "r", encoding="utf-8") as archivo:
+        with open("C:\\Users\\Usuario\\PycharmProjects\\ProyectoPOOKalleRosa2\\arquitectura\\Archivos\\facturas.json", "r", encoding="utf-8") as archivo:
             datos = json.load(archivo)
 
             return datos

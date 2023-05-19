@@ -12,8 +12,8 @@ class App:
 
         usu = int(self.usuario.get())
         password = self.password.get()
-        Usuario = UsuarioInicioSesion(usu, password)
-        if Usuario.iniciar_sesion() == True:
+        usuario = UsuarioInicioSesion(usu, password)
+        if usuario.iniciar_sesion() == True:
             self.ventana.destroy()
             MasterPanel()
         else:

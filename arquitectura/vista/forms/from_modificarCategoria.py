@@ -2,12 +2,14 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from tkinter.font import BOLD
 import arquitectura.vista.util.generic as utl
+from arquitectura.modelo import Inventario
 
-
-class modificar_categoria:
+class ModificarCategoria:
 
     def modificar_categoria(self, categoria: str, nuevo_precio: float):
-        # Realiza las acciones necesarias para modificar la categoría (sin utilizar JSON)
+        categoria = self.categoria.get()
+        nuevo_precio = float(self.nuevo_precio.get())
+        Inventario.modificar_categoria(categoria, nuevo_precio)
         messagebox.showinfo(message="Categoría modificada correctamente", title="Mensaje")
 
     def __init__(self):
@@ -50,4 +52,4 @@ class modificar_categoria:
 
 
 if __name__ == "__main__":
-    modificar_categoria()
+    ModificarCategoria()

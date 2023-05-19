@@ -2,7 +2,8 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from tkinter.font import BOLD
 
-class buscar_producto:
+
+class BuscarProducto:
 
     inventario = [
         {
@@ -60,4 +61,4 @@ class buscar_producto:
 
 
 if __name__ == "__main__":
-    buscar_producto()
+    BuscarProducto()

@@ -2,8 +2,8 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from tkinter.font import BOLD
 
-class mostrar_inventario:
-#prueba no es el inventario real
+
+class MostrarInventario:
     inventario = [
         {
             "nombre_categoria": "Categoria 1",
@@ -48,4 +48,4 @@ class mostrar_inventario:
         self.ventana.mainloop()
 
 if __name__ == "__main__":
-    mostrar_inventario()
+    MostrarInventario()

@@ -2,8 +2,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from tkinter.font import BOLD
 
-class consultar_facturas:
-#prueba, no son las facturas reales
+class ConsultarFacturas:
     facturas = [
         {
             "nombre_cliente": "Cliente 1",
@@ -43,4 +42,4 @@ class consultar_facturas:
         self.ventana.mainloop()
 
 if __name__ == "__main__":
-    consultar_facturas()
+    ConsultarFacturas()

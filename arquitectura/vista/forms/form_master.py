@@ -1,14 +1,14 @@
 import tkinter as tk
 import arquitectura.vista.util.generic as utl
-from arquitectura.vista.forms.form_calcularPrecio import calcular_Precio
-from arquitectura.vista.forms.form_crearCategoria import crear_categoria
-from arquitectura.vista.forms.from_modificarCategoria import modificar_categoria
-from arquitectura.vista.forms.from_modificarProducto import modificar_producto
-from arquitectura.vista.forms.from_ingresarProducto import ingresar_producto
-from arquitectura.vista.forms.from_generarFactura import generar_factura
-from arquitectura.vista.forms.form_mostrar_Inventario import mostrar_inventario
-from arquitectura.vista.forms.form_consultarFacturas import consultar_facturas
-from arquitectura.vista.forms.form_buscarProducto import buscar_producto
+from arquitectura.vista.forms.form_calcularPrecio import CalcularPrecio
+from arquitectura.vista.forms.form_crearCategoria import CrearCategoria
+from arquitectura.vista.forms.from_modificarCategoria import ModificarCategoria
+from arquitectura.vista.forms.from_modificarProducto import ModificarProducto
+from arquitectura.vista.forms.from_ingresarProducto import IngresarProducto
+from arquitectura.vista.forms.from_generarFactura import GenerarFactura
+from arquitectura.vista.forms.form_mostrar_Inventario import MostrarInventario
+from arquitectura.vista.forms.form_consultarFacturas import ConsultarFacturas
+from arquitectura.vista.forms.form_buscarProducto import BuscarProducto
 
 
 class MasterPanel:
@@ -26,37 +26,36 @@ class MasterPanel:
         frame_botones = tk.Frame(self.ventana, bd=0, relief=tk.SOLID, bg='#fcfcfc')
         frame_botones.pack(side="left", fill="y")
 
-        botones = ["calcular Precio", "crear categoria", "modificar categoria", "modificar producto", "ingresar "
-                                                                                                      "producto",
+        botones = ["Crear categoria", "Modificar precio categoria", "Ingresar producto", "Modificar cantidad producto", "Calular Precio",
                    "generar factura", "mostrar inventario", "consultar facturas", "buscar producto"]
 
         # Funciones personalizadas para los botones
         def funcion_boton_1():
-            calcular_Precio()
+            CrearCategoria()
 
         def funcion_boton_2():
-            crear_categoria()
+            ModificarCategoria()
 
         def funcion_boton_3():
-            modificar_categoria()
+            IngresarProducto()
 
         def funcion_boton_4():
-            modificar_producto()
+            ModificarProducto()
 
         def funcion_boton_5():
-            ingresar_producto()
+            CalcularPrecio()
 
         def funcion_boton_6():
-            generar_factura()
+            GenerarFactura()
 
         def funcion_boton_7():
-            mostrar_inventario()
+            MostrarInventario()
 
         def funcion_boton_8():
-            consultar_facturas()
+            ConsultarFacturas()
 
         def funcion_boton_9():
-            buscar_producto()
+            BuscarProducto()
 
         for boton_texto, funcion in zip(botones, [funcion_boton_1, funcion_boton_2, funcion_boton_3, funcion_boton_4,
                                                   funcion_boton_5, funcion_boton_6, funcion_boton_7, funcion_boton_8,
